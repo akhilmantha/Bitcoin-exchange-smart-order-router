@@ -80,3 +80,23 @@ bankroll_bitfinex = 0
 fees_bitfinex = 0
 bids = orderbook_bitfinex['bids']
 length_bids_bitfinex = len(bids)
+
+while (i < length_bids_bitfinex):
+	price_bitfinex = Decimal(orderbook_bitfinex['bids'][i]['price'])
+	volume_bitfinex = Decimal(orderbook_bitfinex['bids'][i]['amount'])
+	#print "%s,%s" % (volume,price)
+	if (order <= 0):
+		break
+	else:
+		if (volume_bitfinex > order):
+			remain = volume_bitfinex - order
+			bankroll_bitfinex = bankroll_bitfinex + (price_bitfinex * order)
+			fees_kraken = fees_bitfinex + (price_bitfinex * order * Decimal(0.005))
+			#print 0
+			break
+		else:
+			order = order - volume_bitfinex
+			bankroll_bitfinex = bankroll_bitfinex + (price_bitfinex * volume_bitfinex)
+			fees_bitfinex = fees_bitfinex + (price_bitfinex * volume_bitfinex * Decimal(0.005))
+			#print order
+	i = i + 1
