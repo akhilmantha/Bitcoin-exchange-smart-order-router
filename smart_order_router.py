@@ -47,3 +47,23 @@ orderbook_kraken = k.query_public('Depth',{'pair':'XBTUSD'})
 bids = orderbook_kraken['result']['XXBTZUSD']['bids']
 length_bids_kraken = len(bids)
 i = 0
+
+while (i < length_bids_kraken):
+	price_kraken = Decimal(orderbook_kraken['result']['XXBTZUSD']['bids'][i][0])
+	volume_kraken = Decimal(orderbook_kraken['result']['XXBTZUSD']['bids'][i][1])
+	#print "%s,%s" % (volume,price)
+	if (order <= 0):
+		break
+	else:
+		if (volume_kraken > order):
+			remain = volume_kraken - order
+			bankroll_kraken = bankroll_kraken + (price_kraken * order)
+			fees_kraken = fees_kraken + (price_kraken * order * Decimal(0.005))
+			#print 0
+			break
+		else:
+			order = order - volume_kraken
+			bankroll_kraken = bankroll_kraken + (price_kraken * volume_kraken)
+			fees_kraken = fees_kraken + (price_kraken * volume_kraken * Decimal(0.005))
+			#print order
+	i = i + 1
