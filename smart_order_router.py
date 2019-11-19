@@ -67,3 +67,8 @@ while (i < length_bids_kraken):
 			fees_kraken = fees_kraken + (price_kraken * volume_kraken * Decimal(0.005))
 			#print order
 	i = i + 1
+
+print "** kraken ** our bankroll is: $%s" % bankroll_kraken.quantize(TWOPLACES)
+print "** kraken ** total fees are: $%s" % fees_kraken.quantize(TWOPLACES)
+kraken_takehome = bankroll_kraken - fees_kraken - Decimal(0.90)
+print "** kraken ** take home is: $%s" % (kraken_takehome).quantize(TWOPLACES)
