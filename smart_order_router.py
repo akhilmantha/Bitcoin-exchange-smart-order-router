@@ -34,3 +34,8 @@ while (i < length_bitstamp):
 			fees_bitstamp = fees_bitstamp + (price_bitstamp * volume_bitstamp * Decimal(0.005))
 			#print order
 	i = i + 1
+
+print "** BITSTAMP ** our bankroll is: $%s" % bankroll_bitstamp.quantize(TWOPLACES)
+print "** BITSTAMP ** total fees are: $%s" % fees_bitstamp.quantize(TWOPLACES)
+bitstamp_takehome = bankroll_bitstamp - fees_bitstamp - Decimal(0.90)
+print "** BITSTAMP ** take home is: $%s" % (bitstamp_takehome).quantize(TWOPLACES)
