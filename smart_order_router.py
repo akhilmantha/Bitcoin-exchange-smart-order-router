@@ -39,3 +39,11 @@ print "** BITSTAMP ** our bankroll is: $%s" % bankroll_bitstamp.quantize(TWOPLAC
 print "** BITSTAMP ** total fees are: $%s" % fees_bitstamp.quantize(TWOPLACES)
 bitstamp_takehome = bankroll_bitstamp - fees_bitstamp - Decimal(0.90)
 print "** BITSTAMP ** take home is: $%s" % (bitstamp_takehome).quantize(TWOPLACES)
+
+order = Decimal(sys.argv[1])
+bankroll_kraken = 0
+fees_kraken = 0
+orderbook_kraken = k.query_public('Depth',{'pair':'XBTUSD'})
+bids = orderbook_kraken['result']['XXBTZUSD']['bids']
+length_bids_kraken = len(bids)
+i = 0
