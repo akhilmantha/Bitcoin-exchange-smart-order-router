@@ -100,3 +100,26 @@ while (i < length_bids_bitfinex):
 			fees_bitfinex = fees_bitfinex + (price_bitfinex * volume_bitfinex * Decimal(0.005))
 			#print order
 	i = i + 1
+
+print "** bitfinex ** our bankroll is: $%s" % bankroll_bitfinex.quantize(TWOPLACES)
+print "** bitfinex ** total fees are: $%s" % fees_bitfinex.quantize(TWOPLACES)
+bitfinex_takehome = bankroll_bitfinex - fees_bitfinex - Decimal(0.90)
+print "** bitfinex ** take home is: $%s" % (bitfinex_takehome).quantize(TWOPLACES)
+
+a =  Decimal(bitstamp_takehome).quantize(TWOPLACES)
+b = Decimal(bitfinex_takehome).quantize(TWOPLACES)
+c = Decimal(kraken_takehome).quantize(TWOPLACES)
+
+if (a > b):
+	if (b > c):
+		print "Bitstamp wins: %s" % a
+		## at this point you would route order to bitstamp
+
+if (b > a):
+	if (a > c):
+		print "Bitfinex wins: %s" % b
+		## at this point you would route order to bitfinex
+
+if (c > a):
+	if (a > b):
+		print "Kraken wins %s" % c
