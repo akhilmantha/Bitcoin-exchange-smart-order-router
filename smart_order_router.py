@@ -78,7 +78,7 @@ orderbook_bitfinex = client.order_book('btcusd')
 order = Decimal(sys.argv[1])
 bankroll_bitfinex = 0
 fees_bitfinex = 0
-bids = orderbook_bitfinex['bids']
+bids = orderbook_bitfinex.get('bids', none)
 length_bids_bitfinex = len(bids)
 
 while (i < length_bids_bitfinex):
