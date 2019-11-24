@@ -74,7 +74,7 @@ kraken_takehome = bankroll_kraken - fees_kraken - Decimal(0.90)
 print "** kraken ** take home is: $%s" % (kraken_takehome).quantize(TWOPLACES)
 
 client = bitfinex.Client()
-orderbook_bitfinex = client.order_book('btcusd')
+orderbook_bitfinex = client.order_book.get('btcusd', none)
 order = Decimal(sys.argv[1])
 bankroll_bitfinex = 0
 fees_bitfinex = 0
