@@ -25,7 +25,7 @@ while (i < length_bitstamp):
 		if (volume_bitstamp > order):
 			remain = volume_bitstamp - order
 			bankroll_bitstamp = bankroll_bitstamp + (price_bitstamp * order)
-			fees_bitstamp = fees_bitstamp + (price_bitstamp * order * Decimal(0.005))
+			fees_bitstamp = fees_bitstamp + (price_bitstamp * order * Decimal(0.009))
 			#print 0
 			break
 		else:
